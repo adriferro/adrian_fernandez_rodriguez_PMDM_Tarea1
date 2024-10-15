@@ -25,13 +25,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/welcome_activity_alarma" />
+            tools:text="@string/welcome_activity_login_correcto" />
 
         <Button
             android:id="@+id/btnAlarma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnAlarma_activity_alarma"
+            android:text="@string/btnAlarma_activity_login_correcto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

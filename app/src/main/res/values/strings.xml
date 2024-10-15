@@ -6,7 +6,11 @@
     <string name="btnLogin_activity_login">Iniciar sesión</string>
     <string name="btnModify_activity_login">Modificar credenciales</string>
 
-    <string name="welcome_activity_alarma">Bienvenido: </string>
-    <string name="btnAlarma_activity_alarma">Poner alarma</string>
+    <string name="welcome_activity_login_correcto">Bienvenido:</string>
+    <string name="btnAlarma_activity_login_correcto">Poner alarma</string>
 
+    <string name="name_alar_activity_alarma">Nombre: </string>
+    <string name="hour_activity_alarma">Hora: </string>
+    <string name="min_activity_alarma">Minutos: </string>
+    <string name="btnCrearAlarma_activity_alarma">Crear alarma</string>
 </resources>

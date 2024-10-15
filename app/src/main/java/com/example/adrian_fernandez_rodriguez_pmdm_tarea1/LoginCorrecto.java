@@ -35,7 +35,8 @@ public class LoginCorrecto extends AppCompatActivity {
         Button btnPonerAlarma = findViewById(R.id.btnAlarma);
 
         // Mostrar el mensaje de bienvenida con el nombre de usuario
-        welcomeText.setText("Bienvenido: " + username);
+        String welcome = getString(R.string.welcome_activity_login_correcto) + " " + username;
+        welcomeText.setText(welcome);
 
         // Acción del ImageButton para abrir la página web
         imageButtonWeb.setOnClickListener(new View.OnClickListener() {
