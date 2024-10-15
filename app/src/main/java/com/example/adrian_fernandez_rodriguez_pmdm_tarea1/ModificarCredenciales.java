@@ -1,6 +1,10 @@
 package com.example.adrian_fernandez_rodriguez_pmdm_tarea1;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +23,29 @@ public class ModificarCredenciales extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Referencias a los componentes
+        EditText editTextNuevoUsuario = findViewById(R.id.editTextNewName);
+        EditText editTextNuevaContrasena = findViewById(R.id.editTextNewPwd);
+        Button btnGuardarCambios = findViewById(R.id.btnSave);
+
+        // Acción del botón "Guardar cambios"
+        btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nuevoUsuario = editTextNuevoUsuario.getText().toString();
+                String nuevaContrasena = editTextNuevaContrasena.getText().toString();
+
+                // Devolver los nuevos datos a la actividad anterior
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("NEW_USERNAME", nuevoUsuario);
+                resultIntent.putExtra("NEW_PASSWORD", nuevaContrasena);
+                setResult(RESULT_OK, resultIntent);
+
+                // Finalizar la actividad
+                finish();
+            }
         });
     }
 }

@@ -17,6 +17,7 @@ public class Login extends AppCompatActivity {
 
     private String username = "admin";
     private String password = "admin";
+    private static final int REQUEST_CODE_MODIFY_CREDENTIALS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 // Iniciar la cuarta actividad para modificar credenciales
                 Intent intent = new Intent(Login.this, ModificarCredenciales.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_MODIFY_CREDENTIALS); // Usamos startActivityForResult para recibir nuevos datos
             }
         });
     }
@@ -70,11 +71,16 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE_MODIFY_CREDENTIALS && resultCode == RESULT_OK) {
             // Obtener nuevas credenciales
-            username = data.getStringExtra("NEW_USERNAME");
-            password = data.getStringExtra("NEW_PASSWORD");
-            Toast.makeText(this, "Credenciales modificadas", Toast.LENGTH_SHORT).show();
+            String nuevoUsername = data.getStringExtra("NEW_USERNAME");
+            String nuevaPassword = data.getStringExtra("NEW_PASSWORD");
+
+            if (nuevoUsername != null && nuevaPassword != null) {
+                username = nuevoUsername;
+                password = nuevaPassword;
+                Toast.makeText(this, "Credenciales modificadas", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

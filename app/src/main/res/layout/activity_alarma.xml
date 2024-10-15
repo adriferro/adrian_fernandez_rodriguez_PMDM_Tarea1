@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name_alar_activity_alarma"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextNombreAlar"
@@ -45,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hour_activity_alarma"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextHora"
@@ -66,7 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/min_activity_alarma"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextMin"

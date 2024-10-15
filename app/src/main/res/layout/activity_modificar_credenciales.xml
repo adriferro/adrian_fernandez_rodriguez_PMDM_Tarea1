@@ -7,4 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".ModificarCredenciales">
 
+    <LinearLayout
+        android:layout_width="352dp"
+        android:layout_height="419dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewNewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newName_activity_modificar_credenciales"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextNewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewNewPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/newPwd_activity_modificar_credenciales"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextNewPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnGuardar_activity_modificar_credenciales"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,8 @@
     <string name="hour_activity_alarma">Hora: </string>
     <string name="min_activity_alarma">Minutos: </string>
     <string name="btnCrearAlarma_activity_alarma">Crear alarma</string>
+    
+    <string name="newName_activity_modificar_credenciales">Nuevo nombre de usuario:</string>
+    <string name="newPwd_activity_modificar_credenciales">Nuevo contraseña:</string>
+    <string name="btnGuardar_activity_modificar_credenciales">Guardar cambios</string>
 </resources>
