@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">adrian_fernandez_rodriguez_PMDM_Tarea1</string>
+    <string name="name_activity_login">Nombre</string>
+    <string name="pwd_activity_login">Contraseña</string>
+
+    <string name="btnLogin_activity_login">Iniciar sesión</string>
+    <string name="btnModify_activity_login">Modificar credenciales</string>
+
+</resources>
