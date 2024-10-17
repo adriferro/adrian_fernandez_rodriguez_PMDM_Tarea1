@@ -29,31 +29,25 @@ public class LoginCorrecto extends AppCompatActivity {
 
         String username = getIntent().getStringExtra("USERNAME");
 
-        // Referencias a los elementos del layout
         TextView welcomeText = findViewById(R.id.textViewWelcome);
         ImageButton imageButtonWeb = findViewById(R.id.imageBtnWeb);
         Button btnPonerAlarma = findViewById(R.id.btnAlarma);
 
-        // Mostrar el mensaje de bienvenida con el nombre de usuario
         String welcome = getString(R.string.welcome_activity_login_correcto) + " " + username;
         welcomeText.setText(welcome);
 
-        // Acción del ImageButton para abrir la página web
         imageButtonWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent implícito para abrir el navegador con la URL
                 String url = "https://www.tutorialspoint.com/android/android_intents_filters.htm";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
             }
         });
 
-        // Acción del botón "Poner alarma" que lleva a la actividad 3
         btnPonerAlarma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent explícito para ir a la actividad de poner la alarma
                 Intent intent = new Intent(LoginCorrecto.this, Alarma.class);
                 startActivity(intent);
             }

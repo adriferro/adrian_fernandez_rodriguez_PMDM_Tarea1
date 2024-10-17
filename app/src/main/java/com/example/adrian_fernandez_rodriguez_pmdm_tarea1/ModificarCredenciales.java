@@ -25,25 +25,21 @@ public class ModificarCredenciales extends AppCompatActivity {
             return insets;
         });
 
-        // Referencias a los componentes
         EditText editTextNuevoUsuario = findViewById(R.id.editTextNewName);
         EditText editTextNuevaContrasena = findViewById(R.id.editTextNewPwd);
         Button btnGuardarCambios = findViewById(R.id.btnSave);
 
-        // Acción del botón "Guardar cambios"
         btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nuevoUsuario = editTextNuevoUsuario.getText().toString();
                 String nuevaContrasena = editTextNuevaContrasena.getText().toString();
 
-                // Devolver los nuevos datos a la actividad anterior
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("NEW_USERNAME", nuevoUsuario);
                 resultIntent.putExtra("NEW_PASSWORD", nuevaContrasena);
                 setResult(RESULT_OK, resultIntent);
 
-                // Finalizar la actividad
                 finish();
             }
         });

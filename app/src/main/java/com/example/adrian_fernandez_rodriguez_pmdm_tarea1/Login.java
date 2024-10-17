@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,7 +19,8 @@ public class Login extends AppCompatActivity {
 
     private String username = "admin";
     private String password = "admin";
-    private static final int REQUEST_CODE_MODIFY_CREDENTIALS = 1;
+
+    private ActivityResultLauncher<Intent> modificarCredencialesLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +34,28 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
-        // Referencias a los botones y campos de texto
         Button btnIniciarSesion = findViewById(R.id.btnLog);
         Button btnModificarCredenciales = findViewById(R.id.btnModify);
         EditText editTextUsername = findViewById(R.id.editTextName);
         EditText editTextPassword = findViewById(R.id.editTextPwd);
 
-        // Acción del botón "Iniciar sesión"
+        modificarCredencialesLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent data = result.getData();
+                        String nuevoUsername = data.getStringExtra("NEW_USERNAME");
+                        String nuevaPassword = data.getStringExtra("NEW_PASSWORD");
+
+                        if (nuevoUsername != null && nuevaPassword != null) {
+                            username = nuevoUsername;
+                            password = nuevaPassword;
+                            Toast.makeText(Login.this, "Credenciales modificadas", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,42 +63,21 @@ public class Login extends AppCompatActivity {
                 String inputPwd = editTextPassword.getText().toString();
 
                 if (inputName.equals(username) && inputPwd.equals(password)) {
-                    // Credenciales correctas, pasar a la segunda actividad
                     Intent intent = new Intent(Login.this, LoginCorrecto.class);
                     intent.putExtra("USERNAME", inputName);
                     startActivity(intent);
                 } else {
-                    // Credenciales incorrectas, mostrar Toast
                     Toast.makeText(Login.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        // Acción del botón "Modificar credenciales"
         btnModificarCredenciales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar la cuarta actividad para modificar credenciales
                 Intent intent = new Intent(Login.this, ModificarCredenciales.class);
-                startActivityForResult(intent, REQUEST_CODE_MODIFY_CREDENTIALS); // Usamos startActivityForResult para recibir nuevos datos
+                modificarCredencialesLauncher.launch(intent);
             }
         });
-    }
-
-    // Recibir las nuevas credenciales de la actividad ModifyCredentialsActivity
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_MODIFY_CREDENTIALS && resultCode == RESULT_OK) {
-            // Obtener nuevas credenciales
-            String nuevoUsername = data.getStringExtra("NEW_USERNAME");
-            String nuevaPassword = data.getStringExtra("NEW_PASSWORD");
-
-            if (nuevoUsername != null && nuevaPassword != null) {
-                username = nuevoUsername;
-                password = nuevaPassword;
-                Toast.makeText(this, "Credenciales modificadas", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }
